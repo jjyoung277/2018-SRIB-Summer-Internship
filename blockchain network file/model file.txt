@@ -1,0 +1,50 @@
+/**
+ * My commodity trading network
+ */
+namespace org.example.mynetwork
+asset ImageMetaData identified by imageName {
+  o String imageName
+  --> Patient owner
+  o String description
+  o Integer size
+  o DateTime lastModifiedTime
+  o Doctor provider
+  o Doctor[] downloader optional
+  o Boolean expired
+}
+
+participant Patient identified by id {
+  o String id
+  o ImageMetaData[] images optional
+}
+
+participant Doctor identified by doctorId {
+  o String doctorId
+  o String doctorName
+  o String phone
+}
+
+transaction Save {
+  o ImageMetaData imageMetaData
+}
+
+transaction Read {
+  --> Patient patient
+  --> ImageMetaData imageMetaData
+  --> Doctor downloader
+}
+
+transaction Expire {
+  --> ImageMetaData imageMetaData
+}
+
+transaction CreateDoctor {
+  o String doctorId
+  o String doctorName
+  o String phone
+}
+
+transaction CreatePatient {
+  o String id
+  //o ImageMetaData[] images
+}
