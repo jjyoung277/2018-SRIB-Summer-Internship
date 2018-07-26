@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title join page
+    body
+        p
+            a(href= _root) 
+                img(src="/banner.jpg" width="13%" height="10%")
+        form(action="/join/process" method="post")
+            table
+                tr
+                    td
+                        table(width="350" bgcolor="#d0d4dd" border="0" cellpadding="5" cellspacing="1")
+                            tr(bgcolor="ffffff")
+                                    td(bgcolor="f5f5f5" width="80") id
+                                    td
+                                        input(width="250" type="text" name="id" placeholder="id")
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") password
+                                td
+                                    input(width="250" type="password" name="password" placeholder="password")
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") name
+                                td
+                                    input(width="250" type="text" name="name" placeholder="name")
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") phone
+                                td
+                                    input(width="250" type="text" name="phone" placeholder="phone")
+                tr
+                    td(align="center")
+                        input(type="submit", value="join")

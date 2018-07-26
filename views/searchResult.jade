@@ -1,0 +1,55 @@
+html
+    head
+    body
+        p
+            a(href= _root) 
+                img(src="/banner.jpg" width="13%" height="10%")
+        table(cellpadding="0" cellspacing="0")
+                tr
+                    td
+                        table(width="350" bgcolor="#d0d4dd" border="0" cellpadding="5" cellspacing="1")
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") id
+                                td
+                                    input(type='text' name='patientSSN' value= _patientSSN)
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") name
+                                td
+                                    input(type='text' name='patientName' value= _patientName) 
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") sex
+                                td
+                                    input(type='text' name='sex' value= _sex)
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") birth
+                                td
+                                    input(type='text' name='birth' value= _birth)
+                            tr(bgcolor="ffffff")
+                                td(bgcolor="f5f5f5" width="80") phone
+                                td
+                                    input(type='text' name='phone' value= _phone)
+        <br><br>
+        h2= '['+_patientName+']' + "'s record"
+        table(border='1px')
+            tr(bgcolor = 'gray')
+                td image name
+                td image description
+                td doctor name
+                td doctor's contact
+                td link
+                td downloader
+            each image in _images
+                tr
+                    td(width="200")= image.imageName
+                    td(width="250")= image.description
+                    td(width="100")= image.provider.doctorName
+                    td(width="130")= image.provider.phone
+                    td(width="300")
+                        form(action="/download/#{image.imageName}", method="get")
+                            input(type="text", name="key" placeholder = "key")
+                            input(type="submit" value="download" placeholder = 'key')
+                    td(width="200")
+                        each downloader in image.downloader
+                            ul
+                                li= downloader.doctorName
+        
